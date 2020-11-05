@@ -4,12 +4,13 @@
 using namespace std;
 
 int main() {
-    int N, x, temp = 0;
+    int N, x, temp;
 
     cin >> N;
 
     for (int i = 0; i < N; i++)
     {
+        temp = 0;
         cin >> x;
         bool isPrime = true;
 
