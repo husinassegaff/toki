@@ -1,19 +1,45 @@
-#include <stdio.h>
+#include <cstdio>
 
+int N;
+int T;
+int ar[2][1001];
 
-int main(){
-    int N;
+void swap(int &a, int &b) {
+    int temp;
 
-    cin >> N;
+    temp = a;
+    a = b;
+    b = temp;
+}
 
-    int A[N-1];
-    int B[N-1];
-
-    for (int i = 0; i <= N; ++i){
-        cin >> A[i];
+int main() {
+  scanf("%d", &N);
+  for (int i = 0; i < 2; i++) {
+    for (int j = 0; j < N; j++) {
+      scanf("%d", &ar[i][j]);
     }
+  }
 
-     for (int i = 0; i <= N; ++i){
-        cin >> B[i];
+  scanf("%d", &T);
+  for (int i = 0; i < T; i++) {
+    char buff1[5], buff2[5];
+    int x, y;
+    scanf("%s %d %s %d", buff1, &x, buff2, &y);
+
+    int p = buff1[0] - 'A';
+    int q = buff2[0] - 'A';
+    x--;
+    y--;
+    swap(ar[p][x], ar[q][y]);
+  }
+
+  for (int i = 0; i < 2; i++) {
+    for (int j = 0; j < N; j++) {
+      printf("%d", ar[i][j]);
+      if (j+1 < N) {
+        printf(" ");
+      }
     }
+    printf("\n");
+  }
 }
