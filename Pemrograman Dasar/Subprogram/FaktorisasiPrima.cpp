@@ -3,26 +3,30 @@
 using namespace std;
 
 int main(){
-    int i, j, n;
-    scanf("%d", &n);
-    i=1;j=n/2;
-    while(i<j){
-        if(n%i==0){
-            j=n/i;
-            cout << i << endl;
-            n = n / i;
+   int n, factor = 2;
+
+   cin >> n;
+
+    while (factor < n)
+    {
+        if(n % factor == 0){
+            int exponent = 0;
+            while( n % factor == 0){
+                n = n / factor;
+                exponent++;
+            }
+
+            if(exponent != 1) cout << factor << "^" << exponent;
+            else cout << factor;
+
+            if(n != 1) cout << " x ";
         }
-        i++;
+        factor++;
     }
 
-    i=j;
-    while(i<=n){
-        if(n%i==0){
-            j=n/i;
-            if(i!=j)cout << i << " " << endl;
-            n = n / i;
-        }
-        i++;
-    }
+    if(n != 1) cout << factor;
+
+    cout << endl;
+    
     return 0;
 }
